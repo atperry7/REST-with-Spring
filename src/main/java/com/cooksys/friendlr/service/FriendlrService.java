@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.cooksys.friendlr.dto.PersonWithIdDto;
 import com.cooksys.friendlr.exception.PersonNotFoundException;
 import com.cooksys.friendlr.pojo.Person;
 
@@ -39,6 +38,19 @@ public class FriendlrService {
 		
 		allPeople.get(personId).getFriends().add(allPeople.get(friendId));
 		return allPeople.get(personId);
+	}
+	
+	public Person addPet(Integer personId, Integer petId) {
+		checkIds(personId);
+		allPeople.get(personId).getPets().add(petId);
+		return allPeople.get(personId);
+		
+	}
+	
+	public List<Integer> getPets(Integer personId) {
+		checkIds(personId);
+		
+		return allPeople.get(personId).getPets();
 	}
 
 	public List<Person> getFriends(Integer personId) {

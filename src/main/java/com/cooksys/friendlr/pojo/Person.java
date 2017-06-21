@@ -6,12 +6,14 @@ import java.util.List;
 public class Person {
 
 	Integer id;
-	
+
 	String firstName;
-	
+
 	String lastName;
-	
+
 	List<Person> friends = new ArrayList<Person>();
+
+	private List<Integer> pets = new ArrayList<>();
 
 	public Integer getId() {
 		return id;
@@ -69,6 +71,13 @@ public class Person {
 			return false;
 		return true;
 	}
-	
-	
+
+	public List<Integer> getPets() {
+		return pets;
+	}
+
+	public void setPets(List<Integer> pets) {
+		this.pets = pets;
+	}
+
 }
