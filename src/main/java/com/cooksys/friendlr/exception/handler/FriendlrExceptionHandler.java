@@ -11,6 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.cooksys.friendlr.exception.PersonNotFoundException;
+import com.cooksys.friendlr.exception.PetNotFoundException;
 
 @ControllerAdvice
 public class FriendlrExceptionHandler extends ResponseEntityExceptionHandler {
@@ -20,6 +21,13 @@ public class FriendlrExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler
 	public ResponseEntity<Object> handlePersonNotFoundException(PersonNotFoundException ex, WebRequest request) {
 		
+		log.warn(ex.getMessage());
+		
+		return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<Object> handlePetNotFoundException(PetNotFoundException ex, WebRequest request) {
 		log.warn(ex.getMessage());
 		
 		return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND, request);

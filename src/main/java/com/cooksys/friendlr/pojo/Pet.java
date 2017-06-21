@@ -6,6 +6,7 @@ import java.util.List;
 public class Pet {
 	private Integer id;
 	private String petName;
+	private String petType;
 	private List<Integer> owners = new ArrayList<>();
 
 	public String getPetName() {
@@ -56,5 +57,13 @@ public class Pet {
 			return false;
 		return true;
 	}
-	
+
+	public String getPetType() {
+		return petType;
+	}
+
+	public void setPetType(String petType) {
+		this.petType = petType;
+	}
+
 }
