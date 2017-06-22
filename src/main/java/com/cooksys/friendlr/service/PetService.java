@@ -41,7 +41,10 @@ public class PetService {
 	public Pet addOwner(Integer petId, Integer owner) {
 		checkIds(petId);
 		
-		allPets.get(petId).getOwners().add(owner);
+		if (!allPets.get(petId).getOwners().contains(owner)) {
+			allPets.get(petId).getOwners().add(owner);
+		}
+		
 		return allPets.get(petId);
 	}
 	

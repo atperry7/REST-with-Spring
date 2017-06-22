@@ -42,9 +42,12 @@ public class FriendlrService {
 	
 	public Person addPet(Integer personId, Integer petId) {
 		checkIds(personId);
-		allPeople.get(personId).getPets().add(petId);
-		return allPeople.get(personId);
 		
+		if (!allPeople.get(personId).getPets().contains(petId)) {
+			allPeople.get(personId).getPets().add(petId);
+		}
+		
+		return allPeople.get(personId);	
 	}
 	
 	public List<Integer> getPets(Integer personId) {
