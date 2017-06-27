@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cooksys.friendlr.dto.PersonSansIdDto;
 import com.cooksys.friendlr.dto.PersonWithIdDto;
 import com.cooksys.friendlr.dto.PetWithIdDto;
-import com.cooksys.friendlr.dto.PetWithOutId;
+import com.cooksys.friendlr.dto.PetWithOutIdDto;
 import com.cooksys.friendlr.mapper.PersonMapper;
 import com.cooksys.friendlr.mapper.PetMapper;
 import com.cooksys.friendlr.pojo.Person;
@@ -55,7 +55,7 @@ public class FriendlrController {
 	}
 	
 	@GetMapping("pet/{id}")
-	public PetWithOutId getPet(@PathVariable Integer id) {
+	public PetWithOutIdDto getPet(@PathVariable Integer id) {
 		return petMapper.toPetWithOutId(petService.getPet(id));
 	}
 	
@@ -66,7 +66,7 @@ public class FriendlrController {
 	}
 	
 	@PostMapping("pet")
-	public Pet postPet(@RequestBody PetWithOutId dto, HttpServletResponse response) {
+	public Pet postPet(@RequestBody PetWithOutIdDto dto, HttpServletResponse response) {
 		response.setStatus(HttpServletResponse.SC_CREATED);
 		return petService.createPet(petMapper.toPet(dto));
 	}

@@ -1,6 +1,6 @@
 package com.cooksys.friendlr.dto;
 
-public class PetWithOutId {
+public class PetWithOutIdDto {
 	private String petName;
 	private String petType;
 
